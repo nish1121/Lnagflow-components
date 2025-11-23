@@ -1,0 +1,8 @@
+# Langflow Components Requirements
+
+# Core Langflow dependency
+# Note: This component is designed to work with Langflow's Component API
+# Install Langflow using: pip install langflow
+
+# No additional dependencies required for SOW Builder component
+# The component uses only Python standard library modules
