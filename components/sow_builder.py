@@ -5,6 +5,7 @@ This component helps create comprehensive Statement of Work (SOW) documents
 by collecting project information and generating a structured SOW output.
 """
 
+import json
 from datetime import datetime
 from typing import Optional
 from langflow.custom import Component
@@ -274,7 +275,6 @@ class SOWBuilder(Component):
             sow_dict["sections"]["acceptance_criteria"] = self.acceptance_criteria
         
         # Convert to formatted string representation
-        import json
         return json.dumps(sow_dict, indent=2)
 
     def _format_list_items(self, text: str) -> str:
@@ -293,7 +293,7 @@ class SOWBuilder(Component):
         formatted = []
         for i, item in enumerate(items, 1):
             # Check if item already starts with a bullet or number
-            if item.startswith("-") or item.startswith("*") or item[0].isdigit():
+            if item and (item.startswith("-") or item.startswith("*") or item[0].isdigit()):
                 formatted.append(item)
             else:
                 formatted.append(f"- {item}")
